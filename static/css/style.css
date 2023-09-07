@@ -1,0 +1,264 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/*****************************
+    Typography
+*****************************/
+@font-face {
+  font-family: 'PPHatton';
+  src: url('../fonts/PPHatton-Medium.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+  font-weight: 400 900;
+  font-style: normal;
+}
+
+/* Variables */
+* {
+  --color-primary: #AEC4A7;
+  --color-secondary: #BECCCD;
+  --color-tertiary: #CBBFA7;
+  --color-background: #FCF7F2;
+  --color-dark: #46484B;
+  --color-mid: #D7D2CE;
+  --color-light: #FFFFFF; 
+  --color-text: #46484B;
+
+  --font-logo: 'PPHatton', sans-serif;
+  --font-hero: 'PPHatton', sans-serif;
+  --font-header: 'PPHatton', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-serif: 'Playfair', serif;
+  --font-cursive: 'Cormorant-Garamond', serif;
+
+  --animation-duration: 0.7s;
+  --animation-duration-long: 2s;
+}
+
+
+.splide__pagination__page.is-active {
+  background: var(--color-primary)!important;
+}
+
+button:focus {
+  box-shadow: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 400;
+}
+
+button, .btn {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  transition: all 0.3s ease-in-out;
+}
+
+
+.font-hero {
+  font-family: var(--font-hero);
+}
+
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  --header-height: 120px;
+}
+
+body {
+  /* overflow-x: hidden;
+  width: 100vw; */
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+.tour-divider {
+  border-top: var(--color-primary) solid 2px;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
+/******************************************
+/* SECTIONS
+/*******************************************/
+section {
+  min-height: 80vh !important;
+  max-height: fit-content;
+  margin: 2rem auto;
+}
+
+/* NAVBAR */
+
+.navbar {
+  background-color: #fff;
+  padding: 0 1rem 0 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  object-position: center;
+  box-shadow: -2px 2px 4px 0px rgba(0,0,0,0.5);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.hero-tagline {
+  color: var(--color-light);
+  /* text-shadow: 2px 2px 4px rgba(0,0,0,0.5); */
+
+}
+
+
+a:hover {
+  cursor: pointer;
+}
+
+
+
+a {
+  color: var(--color-text);
+}
+
+.btn-primary:hover, .btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-highlight);
+  box-shadow: 2px 2px 6px 0px var(--color-highlight);
+  /* color: var(--color-light); */
+}
+
+.btn-secondary {
+  background-color: var(--color-light);
+  color: var(--color-secondary);
+  border: none;
+  padding: 0.5rem 0.7rem;
+  height: fit-content;
+}
+
+
+
+
+
+
+.img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+transition: all var(--animation-duration) ease-in-out;
+}
+
+
+.color-light {
+  color: var(--color-light);
+}
+
+.color-dark {
+  color: var(--color-dark);
+}
+
+ /* Bootstrap supplemental */
+ .vh-20 {
+  height: 20vh;
+}
+.vh-25 {
+  height: 25vh;
+}
+.vh-30 {
+  height: 30vh;
+}
+.vh-40 {
+  height: 40vh;
+}
+.vh-50 {
+  height: 50vh;
+}
+.vh-60 {
+  height: 60vh;
+}
+.vh-70 {
+  height: 70vh;
+}
+.vh-75 {
+  height: 75vh;
+}
+.vh-80 {
+  height: 80vh;
+}
+.vh-90 {
+  height: 90vh;
+}
+.vh-100 {
+  height: 100vh;
+}
+
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0.5));
+}
+
+/* Bootstrap Breakpoints */
+@media (max-width: 576px) { 
+
+ }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+ }
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+ }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+
+ }
