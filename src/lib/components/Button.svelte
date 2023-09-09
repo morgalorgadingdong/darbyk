@@ -27,9 +27,17 @@
         color: var(--color-text);
     }
 
+    .btn.primary:hover {
+        background-color: var(--color-secondary);
+    }
+
     .btn.secondary {
         background-color: var(--color-secondary);
         color: var(--color-text);
+    }
+
+    .btn.secondary:hover {
+        background-color: var(--color-primary);
     }
 
     .btn.transparent {

@@ -23,7 +23,8 @@
   --color-primary: #AEC4A7;
   --color-secondary: #BECCCD;
   --color-tertiary: #CBBFA7;
-  --color-background: #FCF7F2;
+  --color-background: rgb(252, 247, 242);
+  --color-background-o: 252, 247, 242;
   --color-dark: #46484B;
   --color-mid: #D7D2CE;
   --color-light: #FFFFFF; 
@@ -60,6 +61,17 @@ button, .btn {
 
 button:hover, .btn:hover {
   transition: all 0.3s ease-in-out;
+}
+
+.hamburger-menu.active .line1 {
+  transform-origin: center;
+  /* transform: rotate(40deg) translateY(4px) translateX(-3px); */
+  transform: rotate(35deg) translatey(3px);
+}
+
+.hamburger-menu.active .line2 {
+  transform: rotate(-35deg) translateY(-3px);
+  transform-origin: center;
 }
 
 

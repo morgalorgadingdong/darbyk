@@ -23,48 +23,64 @@ function toggleMenuView(n) {
     console.log(menuView)
 }
 
+onMount(() => {
+    let menuItems = document.getElementsByClassName('menu-item')
+    let underline = document.getElementsByClassName('underline')
+    let widths = []
+    for (let i = 0; i < menuItems.length; i++) {
+        widths.push(menuItems[i].scrollWidth) 
+    }
+    let width = Math.max(...widths)
+    for (let i = 0; i < underline.length; i++) {
+        underline[i].style.width = width + 'px' 
+    }
+})
+
 </script>
 
 <div class="">
 
 
-<section id="hero" class="d-flex justify-content-between align-items-center">
-    <div class="col-6 d-flex align-items-center flex-wrap">
+<section id="hero" class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+    <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start align-items-center flex-wrap order-2 order-md-1">
         <h1>Your local (+ virtual) skin and brow expert</h1>
         <Button type = {'primary'} url = {'/about'}>Book</Button>
            
     </div>
-    <img class="col-5" src="../img/flowers-framed.png" alt=""/>
+    <img class="col-12 col-md-5 order-1 order-md-2" src="../img/flowers-framed.png" alt=""/>
 </section>
 
 <section id="menu" class="d-flex justify-content-center align-items-center col-12">
-    <ul class="col-12 col-md-10 col-xl-6">
-        <li>
-            <h3 on:click={() => toggleMenuView(1)}>N0. 1 / Brows & Lashes</h3>
+    <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap">
+        <li class="d-flex flex-column align-items-center">
+            <h3 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 / Brows & Lashes</h3>
             {#if menuView == 1}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
                 <p>God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yes, Yes, without the oops! Hey, take a look at the earthlings. Goodbye! God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
+            <div class="underline"></div>
         </li>
-        <li>
-            <h3 on:click={() => toggleMenuView(2)}>N0. 2 / Acne Skin Care</h3>
+        <li class="d-flex flex-column align-items-center">
+            <h3 class="menu-item" on:click={() => toggleMenuView(2)}>N0. 2 / Acne Skin Care</h3>
             {#if menuView == 2}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
                 <p>So you two dig up, dig up dinosaurs? My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Checkmate... You really think you can fly that thing? You really think you can fly that thing?</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
+            <div class="underline"></div>
         </li>
-        <li>
-            <h3 on:click={() => toggleMenuView(3)}>N0. 3 / Virtual Coaching</h3>
+        <li class="d-flex flex-column align-items-center">
+            <h3 class="menu-item" on:click={() => toggleMenuView(3)}>N0. 3 / Virtual Coaching</h3>
             {#if menuView == 3}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
                 <p>My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Checkmate...</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
+            <div class="underline"></div>
         </li>
         <div class="col-12 d-flex justify-content-center btn-container">
             <Button type = {'secondary'} url = {'/'}>Learn More</Button> 
@@ -128,6 +144,11 @@ function toggleMenuView(n) {
 </div>
 
 <style>
+    .underline {
+        border-bottom: 2px solid var(--color-dark);
+        width: 100%;
+        padding-top: 1rem;
+    }
 
     #hero, #menu {
         margin-top: 0;
@@ -151,6 +172,7 @@ function toggleMenuView(n) {
 
     li {
         list-style: none;
+        
     }
 
     #menu li {
@@ -159,21 +181,24 @@ function toggleMenuView(n) {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        width: fit-content;
     }
 
     #menu li h3 {
         text-align: center;
         margin: 1rem;
+        margin-bottom: 0;
     }
 
-    #menu li::after {
+    /* #menu li::after {
         content: '';
         width: 100%;
         height: 2px;
         display: block;
-        margin-top: 2rem;
+        margin-bottom: 2rem;
         background: var(--color-dark);
-    }
+        transition: all 0.3s ease-in-out;
+    } */
 
     #menu li p {
         margin-top: 1rem;
@@ -198,11 +223,46 @@ function toggleMenuView(n) {
         border-radius: 50px;
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 992px) {
         #about h3 {
-            font-size: 18px;
+            font-size: 24px;
             padding: 15px 15px 12px 15px;
             border-radius: 10px;
+        }
+
+        #about-blurb {
+            top: -25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #about h3 {
+            font-size: 24px;
+            padding: 15px 15px 12px 15px;
+            border-radius: 10px;
+        }
+        #about-blurb {
+            top: -25px;
+        }
+    }
+
+   
+
+    
+    @media (max-width: 576px) {
+        #hero h1 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 22px;
+        }
+        
+        #about h3 {
+            font-size: 18px;
+            padding: 15px 10px 12px 10px;
+            border-radius: 10px;
+            text-align: center;
         }
 
         #about img {
@@ -218,31 +278,6 @@ function toggleMenuView(n) {
             padding: 0;
         }
     }
-
-    @media (max-width: 768px) {
-        #about h3 {
-            font-size: 24px;
-            padding: 15px 15px 12px 15px;
-            border-radius: 10px;
-        }
-        #about-blurb {
-            top: -25px;
-        }
-    }
-
-    @media (max-width: 992px) {
-        #about h3 {
-            font-size: 24px;
-            padding: 15px 15px 12px 15px;
-            border-radius: 10px;
-        }
-
-        #about-blurb {
-            top: -25px;
-        }
-    }
-
-    
 
     
 
