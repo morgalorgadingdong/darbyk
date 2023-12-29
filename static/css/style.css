@@ -25,6 +25,7 @@
   --color-tertiary: #CBBFA7;
   --color-background: rgb(252, 247, 242);
   --color-background-o: 252, 247, 242;
+  --color-background-dark: rgb(246, 234, 225);
   --color-dark: #46484B;
   --color-mid: #D7D2CE;
   --color-light: #FFFFFF; 
@@ -42,6 +43,21 @@
 }
 
 
+.body-text {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+
+
+.button.transparent {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+
+
 .splide__pagination__page.is-active {
   background: var(--color-primary)!important;
 }
@@ -53,6 +69,32 @@ button:focus {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-header);
   font-weight: 400;
+  color: var(--color-text);
+}
+
+h1 {
+  /* font-size: 48px !important; */
+  font-size: calc(17px + 2.22222vw)!important;
+}
+
+h2 {
+  font-size: calc(18px + 1.2963vw)!important;
+}
+
+h3 {
+  font-size: calc(26px + 0.390625vw)!important;
+}
+
+h4 {
+  font-size: calc(22px + 0.390625vw)!important;
+}
+
+h5 {
+  font-size: calc(20px + 0.390625vw)!important;
+}
+
+p {
+  font-size: calc(15px + 0.390625vw)!important;
 }
 
 button, .btn {
@@ -91,22 +133,38 @@ button:hover, .btn:hover {
 /* Box Model Hack */
 * {
   box-sizing: border-box;
-  --header-height: 120px;
+  /* --header-height: 120px; */
 }
 
 body {
   /* overflow-x: hidden;
   width: 100vw; */
   background-color: var(--color-background);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--color-background), var(--color-background-dark));
+  color: var(--color-dark);
 }
 
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;  /* this ensures that our shadow-container works as expected */
+  overflow-x: hidden;  /* in case the shadows or any other content might cause horizontal scrolling */
+}
 
+.shadow-container {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+  z-index: 9999;
+}
 
-.tour-divider {
-  border-top: var(--color-primary) solid 2px;
+.shadow {
+  position: absolute;
 }
 
 .modal p {
@@ -119,7 +177,8 @@ body {
 section {
   min-height: 80vh !important;
   max-height: fit-content;
-  margin: 2rem auto;
+  margin: 4rem auto;
+  position: relative;
 }
 
 /* NAVBAR */
@@ -247,7 +306,9 @@ transition: all var(--animation-duration) ease-in-out;
 
 /* Bootstrap Breakpoints */
 @media (max-width: 576px) { 
-
+  h1 {
+    font-size: 24px !important;
+  }
  }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -272,5 +333,93 @@ transition: all var(--animation-duration) ease-in-out;
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) { 
-
+  h1 {
+    font-size: 48px !important;
+  }
+  
+  h2 {
+    font-size: 36px !important;
+  }
+  
+  h3 {
+    font-size: 32px!important;
+  }
+  
+  h4 {
+    font-size: 26px!important;
+  }
+  
+  h5 {
+    font-size: 24px!important;
+  }
+  
+  p {
+    font-size: 18px!important;
+  }
  }
+
+
+
+
+ /* Palm Tree Shadows */
+
+ #shadow-header {
+    left: -6vw;
+    top: -13vh;
+    width: 50vw;
+    max-width: 400px;
+ }
+
+ #shadow-hero {
+    right: -20vw;
+    bottom: -100px;
+    transform: rotate(180deg) scale(1, -1);
+ }
+
+ #shadow-home-menu-1 {
+    left: -10vw;
+    top: -5vh;
+    max-width: 400px;
+    transform: rotate(210deg) scale(-1, 1);
+ }
+
+  #shadow-home-menu-2 {
+      right: -30vw;
+      top: 40vh;
+      transform: rotate(255deg) scale(1, -1);
+  }
+
+
+
+  /* Border-Radius */
+  .border-radius-50 {
+    border-radius: 50px;
+    padding: 0;
+  }
+
+  .border-radius-40 {
+      border-radius: 40px;
+      padding: 0;
+  }
+
+  .border-radius-25 {
+      border-radius: 25px;
+      padding: 0;
+  }
+
+
+  .border-radius-15 {
+      border-radius: 15px;
+      padding: 0;
+  }
+
+  .border-radius-10 {
+      border-radius: 10px;
+      padding: 0;
+  }
+
+  .border-radius-5 {
+      border-radius: 5px;
+      padding: 0;
+  }
+

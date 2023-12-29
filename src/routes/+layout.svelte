@@ -1,10 +1,12 @@
 <script>
     import Header from "./Header.svelte";
     import Footer from "./Footer.svelte";
+    import "../app.css"
 </script>
 
 <div class="app d-flex justify-content-center flex-wrap">
-	<Header />
+	
+    <Header />
     <main class="col-12 col-md-10">
         <slot />
     </main>
@@ -13,6 +15,7 @@
 
 
 <style>
+    
     /* .app {
     width: 100vw;
     overflow-x: hidden;

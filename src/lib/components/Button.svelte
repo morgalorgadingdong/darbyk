@@ -1,13 +1,14 @@
 <script>
     export let type
     export let url
+    export let submitType
 
 </script>
 
 
 
 <a href="{url}">
-    <button class="btn {type}" >
+    <button class={type} type={submitType}>
         <slot></slot>
     </button>
 </a>
@@ -15,42 +16,43 @@
 
 
 <style>
-    .btn {
+    button {
+        background-color: var(--color-primary);
+        border: none;
+        /* padding: 8px 16px 5px 16px !important; */
+        height: fit-content;
         border-radius: 10px;
         min-width: 100px;
         font-family: var(--font-header);
         text-transform: uppercase;
+        padding: 10px 40px;
     }
 
-    .btn.primary {
+    .button:hover {
+        box-shadow: 2px 2px 0 2px #000;
+    }
+
+    .primary {
         background-color: var(--color-primary);
         color: var(--color-text);
     }
 
-    .btn.primary:hover {
+    .secondary {
         background-color: var(--color-secondary);
-    }
-
-    .btn.secondary {
-        background-color: var(--color-secondary);
         color: var(--color-text);
     }
 
-    .btn.secondary:hover {
-        background-color: var(--color-primary);
-    }
-
-    .btn.transparent {
-        background-color: transparent;
+    .tertiary {
+        background-color: rgba(0,0,0,0);
         color: var(--color-text);
     }
 
-    button {
+    .addToCart {
         background-color: var(--color-primary);
-        color: var(--color-light);
-        border: none;
+        border-radius: 15px;
         padding: 8px 16px 5px 16px;
-        height: fit-content;
+        border: 1px solid var(--color-primary);
+        transition: all 0.3s ease-in-out;
     }
-    
+
 </style>
