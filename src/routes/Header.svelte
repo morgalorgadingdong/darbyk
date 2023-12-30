@@ -21,16 +21,16 @@ function toggleHamburgerMenu() {
 
 <Shadow id="shadow-header" type="1"/>
 <!-- <img id="shadow-header" class="shadow-1" src="../img/shadow-1.png"> -->
-<nav class="col-12 col-md-10">
+<nav class="col-12 col-sm-10 px-0 pt-3 pt-md-5">
     <div class="justify-content-between col-12 align-items-center d-md-flex d-none">
-        <ul class="col-3">
+        <ul class="col-4 col-lg-3">
             <a href="/store"><li>store</li></a>
             <a href="/virtualcoaching"><li>virtual coaching</li></a>
         </ul>
-        <div class="col-4">
+        <div class="col-4 px-0">
             <a href="/" class="col-12 px-0"><img class="col-12" src="../img/logo-1.png" alt="logo"></a>
         </div>
-        <ul class="col-3">
+        <ul class="col-4 col-lg-3">
             <a href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>book</li></a>
             <a href="/store/cart"><li><img src="../img/shopping-cart.png" /></li></a>
             <a href="/virtualcoaching/login"><li><img src="../img/user.png" /></li></a>
@@ -49,12 +49,12 @@ function toggleHamburgerMenu() {
         
     </div>
     {#if menuShow}
-        <ul id="mobileMenu" class="d-flex flex-column align-items-end" transition:slide = {{ duration: 500, axis: "x" }}>
+        <ul id="mobileMenu" class="d-flex flex-column align-items-end" transition:slide = {{ duration: 500, axis: "y" }}>
             <a href="/store"><li>store</li></a>
             <a href="/virtualcoaching"><li>virtual coaching</li></a>
             <a href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>book</li></a>
-            <a href="/cart"><li><img src="../img/shopping-cart.png" /></li></a>
-            <a href="/virtualcoaching/login"><li><img src="../img/user.png" /></li></a>
+            <a href="/cart"><li class="d-flex justify-content-end"><img src="../img/shopping-cart.png" /></li></a>
+            <a href="/virtualcoaching/login"><li class="d-flex justify-content-end"><img src="../img/user.png" /></li></a>
         </ul>
     {/if}
 </nav>
@@ -83,10 +83,11 @@ function toggleHamburgerMenu() {
 
     #mobileMenu {
         position: absolute;
-        right: 45px;
+        right: 0px;
         top: 80px;
-        background-color: rgba(var(--color-background-o), 0.8);
+        background-color: rgba(var(--color-background-o));
         z-index: 99;
+        padding-right: 15px;
         /* box-shadow: -8px -8px 16px var(--color-background); */
     }
 

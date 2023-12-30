@@ -361,36 +361,6 @@ transition: all var(--animation-duration) ease-in-out;
 
 
 
- /* Palm Tree Shadows */
-
- #shadow-header {
-    left: -6vw;
-    top: -13vh;
-    width: 50vw;
-    max-width: 400px;
- }
-
- #shadow-hero {
-    right: -20vw;
-    bottom: -100px;
-    transform: rotate(180deg) scale(1, -1);
- }
-
- #shadow-home-menu-1 {
-    left: -10vw;
-    top: -5vh;
-    max-width: 400px;
-    transform: rotate(210deg) scale(-1, 1);
- }
-
-  #shadow-home-menu-2 {
-      right: -30vw;
-      top: 40vh;
-      transform: rotate(255deg) scale(1, -1);
-  }
-
-
-
   /* Border-Radius */
   .border-radius-50 {
     border-radius: 50px;

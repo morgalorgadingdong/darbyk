@@ -55,13 +55,13 @@ onMount(() => {
         <h1 class="mb-3">Your local (+ virtual) skin and brow expert</h1>
         <Button type = {'primary'} url = {'/about'}>Book</Button>
     </div>
-    <img class="col-12 col-md-5 order-1" src="../img/flowers-framed.png" alt=""/>
-    <Shadow id="shadow-hero" type="1"/>
+    <img class="col-12 col-md-6 order-1" src="../img/flowers-framed.png" alt=""/>
+    <Shadow id="shadow-hero" type="1" classs=""/>
 </section>
 
 <section id="menu" class="d-flex justify-content-center align-items-center col-12">
-    <Shadow id="shadow-home-menu-1" type="1"/>
-    <Shadow id="shadow-home-menu-2" type="2"/>
+    <Shadow id="shadow-home-menu-1" type="1" classs="col-10 col-md-6"/>
+    <Shadow id="shadow-home-menu-2" type="2" classs="col-12"/>
     <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap">
         <li class="d-flex justify-content-center col-12 flex-wrap pt-0">
             <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
@@ -163,7 +163,9 @@ onMount(() => {
 <style>
 
     #hero img {
-        max-width: 500px;
+        
+        width: 500px;
+        
     }
 
     .underline {
