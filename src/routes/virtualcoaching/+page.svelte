@@ -3,6 +3,7 @@
   import { userData } from '$lib/firebase';
   import { doc, updateDoc } from "firebase/firestore";
   import { user, db } from "$lib/firebase";
+  import Button from '$lib/components/Button.svelte';
   import { goto } from "$app/navigation";
   import { GoogleAuthProvider, EmailAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
@@ -61,30 +62,42 @@
   </script>
 
 
-<section>
-  <h1>Virtual Coaching</h1>
+<section id="virtualcoaching" class="col-12">
+  <h1 class="col-12 text-center">Virtual Client Portal</h1>
 {#if !$user}
-  <p>Coming soon</p>
+  <p>Coming soon...</p>
 {/if}
   
   <AuthCheck>
     
     {#if userNameFirst}
-      
-      <h2> Hello, {userNameFirst}! </h2> 
-      <p>Coming soon...</p>
-      <button class="btn btn-warning" on:click={signOutSSR}>Sign out</button>
-    {:else}
-      <h1>Virtual Client Portal</h1>
-      <h2> Hello, please tell us a little bit more about yourself</h2> 
-      <input bind:value={nameFirst} type="text" placeholder="First Name" required/>
-      <input bind:value={nameLast} type="text" placeholder="Last Name" required/>
-      <button on:click={updateProfile}>Submit</button>
-      {#if nameError}
-        <p class="error-message">{nameError}</p>
-      {/if}
+      <h2 class="card-title">Welcome, {userNameFirst}</h2>
+      <p class="text-center text-success">Coming soon...</p>
     {/if}
+
   
   </AuthCheck>
 
 </section>
+
+<style>
+  #vc-header .special {
+    text-transform: uppercase;
+  }
+
+  .content-area {
+    border-radius: 0 25px 25px 25px;
+    background-color: rgba(190,204,205, 0.5);
+  }
+  
+  
+  .error-message {
+    color: red;
+  }
+
+
+
+  input {
+    margin: 10px;
+  }
+</style>

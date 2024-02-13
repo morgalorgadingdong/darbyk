@@ -106,9 +106,12 @@
   
 
     
+  <div class="d-flex justify-content-start align-items-center py-3">
     <label for="quantity" class="pl-3 pr-1 mb-0">Quantity:</label>
-    <input type="number" class="mr-3" id="quantity" bind:value={quantity} min="1" />
-
+    <input type="number" class="mr-3" id="quantity" bind:value={quantity} min="1" />  
+  <!-- <label for="quantity" class="pl-3 pr-1 mb-0">Quantity:</label>
+    <input type="number" class="mr-3" id="quantity" bind:value={quantity} min="1" /> -->
+  </div>
     <Button type="addToCart" submitType="submit">Add to Cart</Button>
 
     <!-- <button class="btn m-3" type="submit">Add to Cart</button> -->

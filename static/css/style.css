@@ -37,7 +37,7 @@
   --font-body: 'Inter', sans-serif;
   --font-serif: 'Playfair', serif;
   --font-cursive: 'Cormorant-Garamond', serif;
-
+  --font-body: ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
   --animation-duration: 0.7s;
   --animation-duration-long: 2s;
 }
@@ -49,7 +49,12 @@
   color: var(--color-text);
 }
 
+p {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  color: var(--color-text);
 
+}
 
 .button.transparent {
   background-color: transparent;
@@ -74,11 +79,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   /* font-size: 48px !important; */
-  font-size: calc(17px + 2.22222vw)!important;
+  font-size: calc(15px + 2vw)!important;
 }
 
 h2 {
-  font-size: calc(18px + 1.2963vw)!important;
+  font-size: calc(18px + 0.75vw)!important;
 }
 
 h3 {
@@ -86,7 +91,7 @@ h3 {
 }
 
 h4 {
-  font-size: calc(22px + 0.390625vw)!important;
+  font-size: calc(18px + 0.390625vw)!important;
 }
 
 h5 {
@@ -94,7 +99,12 @@ h5 {
 }
 
 p {
-  font-size: calc(15px + 0.390625vw)!important;
+  font-size: 15px!important;
+  /* font-size: calc(15px + 0.390625vw)!important; */
+}
+
+p.special {
+  font-size: calc(15px + 0.190625vw)!important;
 }
 
 button, .btn {
@@ -107,13 +117,12 @@ button:hover, .btn:hover {
 
 .hamburger-menu.active .line1 {
   transform-origin: center;
-  /* transform: rotate(40deg) translateY(4px) translateX(-3px); */
   transform: rotate(35deg) translatey(3px);
-}
+  }
 
 .hamburger-menu.active .line2 {
-  transform: rotate(-35deg) translateY(-3px);
-  transform-origin: center;
+transform: rotate(-35deg) translateY(-3px);
+transform-origin: center;
 }
 
 
@@ -334,11 +343,11 @@ transition: all var(--animation-duration) ease-in-out;
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) { 
   h1 {
-    font-size: 48px !important;
+    font-size: 36px !important;
   }
   
   h2 {
-    font-size: 36px !important;
+    font-size: 32px !important;
   }
   
   h3 {
@@ -353,9 +362,9 @@ transition: all var(--animation-duration) ease-in-out;
     font-size: 24px!important;
   }
   
-  p {
-    font-size: 18px!important;
-  }
+  /* p {
+    font-size: 12px!important;
+  } */
  }
 
 

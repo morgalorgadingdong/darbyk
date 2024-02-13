@@ -27,8 +27,8 @@ onMount(() => {
     let menuItems = document.getElementsByClassName('menu-item')
     let underline = document.getElementsByClassName('underline')
     console.log(underline)
-    let blurbs = document.getElementsByClassName('blurb')
-    console.log(blurbs)
+    let specials = document.getElementsByClassName('special')
+    console.log(specials)
     let headerContainers = document.getElementsByClassName('menu-h3-container')
     let widths = []
     // Get all widths of menu titles
@@ -37,11 +37,11 @@ onMount(() => {
     }
     // Find the max width
     let width = Math.max(...widths)
-    // Set the underline, header containers, and blurbs to this width
+    // Set the underline, header containers, and specials to this width
     for (let i = 0; i < underline.length; i++) {
         underline[i].style.width = width + 'px'
         headerContainers[i].style.width = width + 'px'
-        // blurbs[i].style.width = width + 'px' 
+        // specials[i].style.width = width + 'px' 
     }
 
 })
@@ -55,7 +55,9 @@ onMount(() => {
         <h1 class="mb-3">Your local (+ virtual) skin and brow expert</h1>
         <Button type = {'primary'} url = {'/about'}>Book</Button>
     </div>
-    <img class="col-12 col-md-6 order-1" src="../img/flowers-framed.png" alt=""/>
+    <div class="col-12 col-md-6 order-1 d-flex justify-content-center">
+        <img class="" src="../img/flowers-framed.png" alt=""/>
+    </div>
     <Shadow id="shadow-hero" type="1" classs=""/>
 </section>
 
@@ -69,7 +71,7 @@ onMount(() => {
             </div>
             {#if menuView == 1}
             <div class="d-flex justify-content-center flex-wrap " transition:slide={{ duration: 500 }}>
-                <p class="pb-3 blurb">God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yes, Yes, without the oops! Hey, take a look at the earthlings. Goodbye! God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.</p>
+                <p class="pb-3 special">God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yes, Yes, without the oops! Hey, take a look at the earthlings. Goodbye! God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
@@ -81,7 +83,7 @@ onMount(() => {
             </div>
             {#if menuView == 2}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 blurb">So you two dig up, dig up dinosaurs? My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Checkmate... You really think you can fly that thing? You really think you can fly that thing?</p>
+                <p class="pb-3 special">So you two dig up, dig up dinosaurs? My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Checkmate... You really think you can fly that thing? You really think you can fly that thing?</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
@@ -93,7 +95,7 @@ onMount(() => {
             </div>
             {#if menuView == 3}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 blurb">My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Checkmate...</p>
+                <p class="pb-3 special">My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Checkmate...</p>
                 <Button type = {'primary'} url = {'/signup'}>Sign Up</Button>
             </div>
             {/if}
@@ -101,7 +103,7 @@ onMount(() => {
             <div class="underline"></div>
         </li>
         <div class="col-12 d-flex justify-content-center btn-container">
-            <Button type = {'secondary'} url = {'/'}>Learn More</Button> 
+            <Button type = {'secondary'} url = {'/'}>All Services</Button> 
         </div>
     </ul>
 </section>
@@ -147,15 +149,18 @@ onMount(() => {
         
 </section> -->
 
-<section id="about" class="d-flex justify-content-center align-items-center col-12 flex-wrap">
-    <div id="img-container" class="col-12 col-xl-6 col-lg-8 col-md-10 col-sm-10 px-3 d-flex justify-content-center">
-        <img src="../img/about.jpg" alt="" class="col-12 border-radius-5"/>
+<section id="about" class="d-flex justify-content-center align-items-center col-12 col-md-10 flex-wrap">
+    <div id="img-container" class="col-12 col-xl-6 col-lg-8 col-md-10 col-sm-10 px-3 d-flex justify-content-center flex-wrap">
+        <img src="../img/about.jpg" alt="" class="border-radius-5"/>
+        <div>
+            <h4 id="about-special">
+                Hello, my name is Darby
+            </h4>
+        </div>
+        
     </div>
-    <div id="about-blurb" class="col-12 col-xl-6 col-md-12 col-sm-8 d-flex justify-content-center flex-wrap mx-3 px-3">
-        <h4>
-            Hello, my name is Darby
-        </h4>
-        <p class="col-10 pt-3">Since launching Darby K Aesthetics in 2019, I've had the joy of guiding countless individuals in Medford, Oregon and beyond, towards achieving clear, radiant skin. Embracing a holistic approach to skincare, I work both in-person and virtually to ensure every client receives personalized care. I'm deeply passionate about what I do, and my goal is to help each person look and feel their best, no matter where they are. Let's embrace the beauty of natural, glowing skin together.</p>
+    <div  class="col-12 col-xl-6 col-md-12 col-sm-10 d-flex justify-content-center flex-wrap px-0">    
+        <p id="text-container" class="col-10 py-3 special">Since launching Darby K Aesthetics in 2019, I've had the joy of guiding countless individuals in Medford, Oregon and beyond, towards achieving clear, radiant skin. Embracing a holistic approach to skincare, I work both in-person and virtually to ensure every client receives personalized care. I'm deeply passionate about what I do, and my goal is to help each person look and feel their best, no matter where they are. Let's embrace the beauty of natural, glowing skin together.<br><br>-Darby</p>
     </div>
 </section>
 
@@ -164,8 +169,8 @@ onMount(() => {
 
     #hero img {
         
-        width: 500px;
-        
+        aspect-ratio: 537/697;
+        max-height: 60vh;
     }
 
     .underline {
@@ -179,7 +184,7 @@ onMount(() => {
     }
 
     #about img { 
-        max-width: 600px;
+        max-height: 60vh;
         box-shadow: -12px 12px 0px var(--color-tertiary);
     }
 
@@ -190,9 +195,14 @@ onMount(() => {
         padding: 25px 25px 22px 25px;
     }
 
-    #about-blurb {
+    #about-special {
         position: relative;
-        top: -40px;
+        top: -30px;
+    }
+
+    #about #text-container {
+        /* border-top: solid 1px var(--color-text);
+        border-bottom: solid 1px var(--color-text); */
     }
 
     #menu h2:hover {
@@ -257,7 +267,7 @@ onMount(() => {
             border-radius: 10px;
         }
 
-        #about-blurb {
+        #about-special {
             top: -25px;
         }
     }
@@ -268,7 +278,7 @@ onMount(() => {
             padding: 15px 15px 12px 15px;
             border-radius: 10px;
         }
-        #about-blurb {
+        #about-special {
             top: -25px;
         }
     }
@@ -297,7 +307,7 @@ onMount(() => {
             padding: 0;
         } */
 
-        #about-blurb {
+        #about-special {
             top: -25px;
         }
 

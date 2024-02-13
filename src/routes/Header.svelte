@@ -1,5 +1,5 @@
 <script>
-import {slide} from 'svelte/transition'
+import {fly} from 'svelte/transition'
 import { onMount } from 'svelte';
 import Shadow from '$lib/components/Shadow.svelte';
 
@@ -11,10 +11,20 @@ import Shadow from '$lib/components/Shadow.svelte';
 // })
 
 let menuShow = false
+  /**
+   * @type {Element | null}
+   */
+let menuToggle
+onMount(() => {
+    menuToggle = document.querySelector('.hamburger-menu')
+    // console.log(menuToggle)
+})
 
 function toggleHamburgerMenu() {
     menuShow = !menuShow
+    menuToggle.classList.toggle('active')
     console.log(menuShow)
+    
 }
 
 </script>
@@ -49,12 +59,12 @@ function toggleHamburgerMenu() {
         
     </div>
     {#if menuShow}
-        <ul id="mobileMenu" class="d-flex flex-column align-items-end" transition:slide = {{ duration: 500, axis: "y" }}>
-            <a href="/store"><li>store</li></a>
-            <a href="/virtualcoaching"><li>virtual coaching</li></a>
-            <a href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>book</li></a>
-            <a href="/cart"><li class="d-flex justify-content-end"><img src="../img/shopping-cart.png" /></li></a>
-            <a href="/virtualcoaching/login"><li class="d-flex justify-content-end"><img src="../img/user.png" /></li></a>
+        <ul id="mobileMenu" class="d-flex flex-column align-items-end" transition:fly = {{ duration: 600, x: 200 }}>
+            <a on:click={toggleHamburgerMenu} href="/store"><li>store</li></a>
+            <a on:click={toggleHamburgerMenu} href="/virtualcoaching"><li>virtual coaching</li></a>
+            <a on:click={toggleHamburgerMenu} href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>book</li></a>
+            <a on:click={toggleHamburgerMenu} href="/cart"><li class="d-flex justify-content-end"><img src="../img/shopping-cart.png" /></li></a>
+            <a on:click={toggleHamburgerMenu} href="/virtualcoaching/login"><li class="d-flex justify-content-end"><img src="../img/user.png" /></li></a>
         </ul>
     {/if}
 </nav>
@@ -69,11 +79,13 @@ function toggleHamburgerMenu() {
 }
 
 .line {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     transform-origin: center;
 }
 
-
+li {
+    font-family: var(--font-body);
+}
 
     #mobileMenu a {
         padding: 1rem;
@@ -127,5 +139,16 @@ function toggleHamburgerMenu() {
         a:hover img {
             color: var(--color-primary);
         }
+
+        .hamburger-menu.active .line1 {
+        transform-origin: center;
+        /* transform: rotate(40deg) translateY(4px) translateX(-3px); */
+        transform: rotate(35deg) translatey(3px);
+        }
+
+    .hamburger-menu.active .line2 {
+    transform: rotate(-35deg) translateY(-3px);
+    transform-origin: center;
+    }
 
 </style>

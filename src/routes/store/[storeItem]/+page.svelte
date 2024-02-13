@@ -57,9 +57,9 @@
     </div>
     
     <div class="col-12 col-sm-6 px-5 d-flex justify-content-start align-content-center flex-wrap">
-        <h2 class="col-12">{data.name}</h2>
+        <h2 class="col-12 pt-3">{data.name}</h2>
         <h4 class="col-12 pt-3">$ {data.price}</h4>
-        <div class="col-12 d-flex justify-content-start mb-2">
+        <div class="col-12 d-flex justify-content-start">
         <AddToCart { data } />
         </div>
         {@html data.descriptionHTML}
@@ -73,7 +73,7 @@
         </div> -->
         
     </div>
-    <div class="col-12 d-flex justify-content-center">
+    <div class="col-12 d-flex justify-content-center pt-3">
         <Button type = {'secondary'} url = {'/store'}>Back to Store</Button>
         <!-- <a href="/store" class=""><div class="btn btn-secondary my-5">Back to Store</div></a> -->
     </div>

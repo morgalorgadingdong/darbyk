@@ -8,8 +8,8 @@
     // import firebase from 'firebase/app';
 
     if ($user) {
-        console.log('user already logged in, redirecting to client portal')
-        goto('/client-portal')
+        console.log('user logged in, redirecting to login')
+        goto('/virtualcoaching/client-portal')
     }
 
     let firebaseui
@@ -21,6 +21,10 @@
 
     onMount(async() => {
         firebaseui = (await import('firebaseui')).default;
+        if ($user) {
+            console.log('user already logged in, redirecting to client portal')
+            goto('/virtualcoaching/client-portal')
+        }
     })
         // ui = new firebaseui.auth.AuthUI(auth);
    
@@ -35,7 +39,7 @@
         } catch (error) {
             console.error("Error signing in with email", error);
         }
-        goto('/client-portal')
+        goto('/virtualcoaching/client-portal')
     }
   
     async function signInWithGoogle() {
@@ -87,7 +91,7 @@
         }
         
 
-        goto('/client-portal')
+        goto('/virtualcoaching/client-portal')
     //   const idToken = await credential.user.getIdToken();
   
     //   const res = await fetch("/api/signin", {
