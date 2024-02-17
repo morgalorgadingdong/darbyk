@@ -4,6 +4,7 @@
     import { doc, updateDoc } from "firebase/firestore";
     import { user, db } from "$lib/firebase";
     import Button from '$lib/components/Button.svelte';
+    import CheckInCard from '$lib/components/CheckInCard.svelte';
     import { goto } from "$app/navigation";
     import { GoogleAuthProvider, EmailAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
   
@@ -59,6 +60,63 @@
       }
     
     
+
+    //   For dev purposes
+    let pastCheckIns = [
+        {
+            title: 'Week 5 Check In',
+            date: '9/28/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 4 Check In',
+            date: '9/21/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 3 Check In',
+            date: '9/14/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 2 Check In',
+            date: '9/7/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 1 Check In',
+            date: '8/31/2023',
+            status: 'inactive'
+        }
+    ]
+    let upcomingCheckIns = [
+        {
+            title: 'Week 6 Check In',
+            date: '10/5/2023',
+            status: 'active'
+        },
+        {
+            title: 'Week 7 Check In',
+            date: '10/12/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 8 Check In',
+            date: '10/19/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 9 Check In',
+            date: '10/26/2023',
+            status: 'inactive'
+        },
+        {
+            title: 'Week 10 Check In',
+            date: '11/2/2023',
+            status: 'inactive'
+        }    
+    ]
+
     </script>
   
   
@@ -110,16 +168,24 @@
             </ul>
           </div>
           </div>
-          <div class="col-12 d-flex justify-content-start align-items-center flex-wrap">
+          <div class="col-12 d-flex justify-content-start align-items-center flex-wrap mt-3">
             <h5>Upcoming Check Ins</h5>
             <div class="d-flex justify-content-start align-items-start flex-wrap col-12 content-area py-3">
-
+                {#each upcomingCheckIns as checkIn}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 py-2">
+                    <CheckInCard status={checkIn.status} title={checkIn.title} date={checkIn.date} />
+                </div>
+                {/each}    
             </div>
         </div>
-        <div class="col-12 d-flex justify-content-start align-items-center flex-wrap">
+        <div class="col-12 d-flex justify-content-start align-items-center flex-wrap mt-3">
             <h5>Past Check Ins</h5>
             <div class="d-flex justify-content-start align-items-start flex-wrap col-12 content-area py-3">
-
+                {#each pastCheckIns as checkIn}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 py-2">
+                    <CheckInCard status={checkIn.status} title={checkIn.title} date={checkIn.date} />
+                </div>
+                {/each}
             </div>
         </div>
       </div>

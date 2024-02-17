@@ -47,12 +47,37 @@
         color: var(--color-text);
     }
 
+    .primary-small {
+        background-color: var(--color-primary);
+        color: var(--color-text);
+        font-size: 14px;
+    }
+
+    .secondary-small {
+        background-color: var(--color-secondary);
+        color: var(--color-text);
+    }
+
+    .tertiary-small {
+        background-color: rgba(0,0,0,0);
+        color: var(--color-text);
+    }
+
     .addToCart {
         background-color: var(--color-primary);
-        border-radius: 15px;
+        border-radius: 10px;
         padding: 8px 16px 5px 16px;
         border: 1px solid var(--color-primary);
         transition: all 0.3s ease-in-out;
+        font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        button {
+            font-size: 14px;
+            padding: 8px 16px 5px 16px;
+            border-radius: 10px;
+        }
     }
 
 </style>

@@ -18,8 +18,8 @@
                 <!-- <img src='$lib/' alt="{listing.Caption0}"/> -->
             </div>
             <div class="col-12 d-flex justify-content-between px-0">
-                <p class="name col-9">{product.name}</p>
-                <p class="price col-3">$ {product.price} </p>
+                <p class="name col-9 pr-0">{product.name}</p>
+                <p class="price col-3 pl-0">$ {product.price} </p>
             </div>
             <!-- <div class="card-img-top"></div> -->
         </div>

@@ -97,10 +97,11 @@ li {
         position: absolute;
         right: 0px;
         top: 80px;
-        background-color: rgba(var(--color-background-o));
+        background-color: rgba(var(--color-background-o), 0.8);
         z-index: 99;
         padding-right: 15px;
-        /* box-shadow: -8px -8px 16px var(--color-background); */
+        /* border-left: solid 4px var(--color-dark); */
+        box-shadow: -8px -8px 16px var(--color-background);
     }
 
     nav {

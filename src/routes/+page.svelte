@@ -61,10 +61,10 @@ onMount(() => {
     <Shadow id="shadow-hero" type="1" classs=""/>
 </section>
 
-<section id="menu" class="d-flex justify-content-center align-items-center col-12">
+<section id="menu" class="d-flex justify-content-center align-items-start pt-5 col-12">
     <Shadow id="shadow-home-menu-1" type="1" classs="col-10 col-md-6"/>
     <Shadow id="shadow-home-menu-2" type="2" classs="col-12"/>
-    <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap">
+    <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap mt-sm-3 mt-lg-5 pt-md-3 pt-lg-5">
         <li class="d-flex justify-content-center col-12 flex-wrap pt-0">
             <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
                 <h2 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 <b>/</b> Brows & Lashes</h2>
