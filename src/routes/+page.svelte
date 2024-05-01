@@ -67,11 +67,16 @@ onMount(() => {
     <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap mt-sm-3 mt-lg-5 pt-md-3 pt-lg-5">
         <li class="d-flex justify-content-center col-12 flex-wrap pt-0">
             <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
-                <h2 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 <b>/</b> Brows & Lashes</h2>
+                <h2 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 <b>/</b> Customized Treatments and Expert Care</h2>
             </div>
             {#if menuView == 1}
             <div class="d-flex justify-content-center flex-wrap " transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yes, Yes, without the oops! Hey, take a look at the earthlings. Goodbye! God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.</p>
+                <p class="pb-3 special">No two brows or skin needs are alike! You deserve personalized care; from the treatments you receive to the
+                    routine you follow at home. I offer an individualized and tailored experience to help you reach and maintain
+                    your skin, brow, and lash goals. Whether you’re a local client in my studio or a virtual client across the country,
+                    I am committed to providing you with a personalized and professional experience. As my client, you can be
+                    confident in my extensive training, knowledge, and passion. Whether it’s a consultation, a monthly
+                    appointment, or a text - I am here for you and your self-care needs.</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
@@ -79,11 +84,14 @@ onMount(() => {
         </li>
         <li class="d-flex justify-content-center col-12 flex-wrap">
             <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
-                <h2 class="menu-item" on:click={() => toggleMenuView(2)}>N0. 2 <b>/</b> Acne Skin Care</h2>
+                <h2 class="menu-item" on:click={() => toggleMenuView(2)}>N0. 2 <b>/</b> Acne Program</h2>
             </div>
             {#if menuView == 2}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">So you two dig up, dig up dinosaurs? My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Checkmate... You really think you can fly that thing? You really think you can fly that thing?</p>
+                <p class="pb-3 special">After personally dealing with acne and unbalanced skin for years, it is my passion to help as many individuals
+                    manage their own acne and achieve healthy, glowing skin. Available for both in person and virtual clients, this
+                    program starts with an extensive consultation and includes weekly check-ins, a customized routine, and
+                    lifestyle recommendations to give support in your clearing journey.</p>
                 <Button type = {'primary'} url = {'/about'}>Book</Button>
             </div>
             {/if}
@@ -91,11 +99,14 @@ onMount(() => {
         </li>
         <li class="d-flex justify-content-center col-12 flex-wrap">
             <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
-                <h2 class="menu-item" on:click={() => toggleMenuView(3)}>N0. 3 <b>/</b> Virtual Coaching</h2>
+                <h2 class="menu-item" on:click={() => toggleMenuView(3)}>N0. 3 <b>/</b> Virtual Clients</h2>
             </div>
             {#if menuView == 3}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. Checkmate...</p>
+                <p class="pb-3 special">While monthly facials are everyone’s favorite - they only make up about 20% of your skin progress. The other
+                    80% lies in your daily routine, both internally and externally. I have worked with individuals from across the
+                    country to help them learn how to listen to their skin, holistically heal skin conditions through diet, products and
+                    lifestyle, and improve their home care routines with personalized recommendations and continuous guidance.</p>
                 <Button type = {'primary'} url = {'/signup'}>Sign Up</Button>
             </div>
             {/if}

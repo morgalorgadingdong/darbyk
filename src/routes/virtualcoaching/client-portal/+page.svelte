@@ -183,7 +183,7 @@
             <div class="d-flex justify-content-start align-items-start flex-wrap col-12 content-area py-3">
                 {#each pastCheckIns as checkIn}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 py-2">
-                    <CheckInCard status={checkIn.status} title={checkIn.title} date={checkIn.date} />
+                    <CheckInCard status={checkIn.status} title={checkIn.title} date={checkIn.date} id={checkIn.id}/>
                 </div>
                 {/each}
             </div>

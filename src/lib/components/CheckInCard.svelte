@@ -4,11 +4,12 @@
     export let status
     </script>
 
+<a href={'./virtualcoaching/' + title} data-sveltekit-preload-data="hover">
     <div class="col-12 d-flex justify-content-center flex-wrap {status}">
         <h5 class="col-12 text-center">{title}</h5>
         <p class="col-12 text-center">{date}</p>
     </div>
-
+</a>
     <style>
         .col-12 {
             padding: 10px;

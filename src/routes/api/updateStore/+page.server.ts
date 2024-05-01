@@ -13,7 +13,14 @@ const client = new Client({
 
 
 function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL, variations) {
-    this.name = name;
+    // if (name) {this.name = name;}
+    // if (id) {this.id = id;}
+    // if (description) {this.description = description;}
+    // if (descriptionHTML) {this.descriptionHTML = descriptionHTML;}
+    // if (price) {this.price = price;}
+    // if (imgIds) {this.imgIds = imgIds;}
+    // if (imgURL) {this.imgURL = imgURL;}
+    // if (variations) {this.variations = variations;}
     this.id = id;
     this.description = description;
     this.descriptionHTML = descriptionHTML;
@@ -67,18 +74,40 @@ export const load = async function() {
             // console.log(variations)
             console.log('Retrieved store item', storeItems[i].itemData.name);
             let currentItem = new StoreItem(
-                storeItems[i].itemData.name, 
-                storeItems[i].id, 
-                storeItems[i].itemData.description, 
-                storeItems[i].itemData.descriptionHtml, 
-                price, 
-                storeItems[i].itemData.imageIds,
+                '',
+                '',
+                '',
+                '',
+                0,
                 [''],
-                variations
+                [''],
+                []
             )
+            currentItem.name = storeItems[i].itemData.name
+            currentItem.id = storeItems[i].id
+            if (storeItems[i].itemData.description) {currentItem.description = storeItems[i].itemData.description}
+            if (storeItems[i].itemData.descriptionHtml) {currentItem.descriptionHTML = storeItems[i].itemData.descriptionHtml}
+            currentItem.price = price
+            if (storeItems[i].itemData.imageIds) {currentItem.imgIds = storeItems[i].itemData.imageIds}
+            if (variations) {currentItem.variations = variations}
+
+            
+            
+            // StoreItem(
+            //     storeItems[i].itemData.name, 
+            //     storeItems[i].id, 
+            //     storeItems[i].itemData.description, 
+            //     storeItems[i].itemData.descriptionHtml, 
+            //     price, 
+            //     storeItems[i].itemData.imageIds,
+            //     [''],
+            //     variations
+            // )
+
             squareItemIds.push(storeItems[i].id);
 
             try {
+                
                 await retrieveStoreItemImgs(currentItem)
                 await setStoreItemToDB(currentItem)
                 await deleteNonExistentItems(squareItemIds);
@@ -134,6 +163,7 @@ export const load = async function() {
             // let price = item.itemData.variations[0].itemVariationData.priceMoney.amount
             
             // console.log( 'price: ' + price)
+            console.log(currentItem)
             await setDoc(docRef, {
                 name: currentItem.name,
                 id: currentItem.id,
@@ -144,6 +174,16 @@ export const load = async function() {
                 imgURL: currentItem.imgURL,
                 variations: currentItem.variations
             });
+            // await setDoc(docRef, {
+            //     name: currentItem.name,
+            //     id: currentItem.id,
+            //     description: currentItem.description,
+            //     descriptionHTML: currentItem.descriptionHTML,
+            //     price: currentItem.price,
+            //     imgIds: currentItem.imgIds, 
+            //     imgURL: currentItem.imgURL,
+            //     variations: currentItem.variations
+            // });
         }
 
         async function deleteNonExistentItems(squareItemIds) {

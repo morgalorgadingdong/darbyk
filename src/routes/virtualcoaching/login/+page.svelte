@@ -5,12 +5,13 @@
     import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
     import { onMount } from 'svelte';
     import { goto } from "$app/navigation";
+    import { checkInsTemplate } from "$lib/data/checkIns";
     // import firebase from 'firebase/app';
 
-    if ($user) {
-        console.log('user logged in, redirecting to login')
-        goto('/virtualcoaching/client-portal')
-    }
+    // if ($user) {
+    //     console.log('user logged in, redirecting to login')
+    //     goto('/virtualcoaching/client-portal')
+    // }
 
     let firebaseui
     let ui
@@ -19,13 +20,13 @@
     let password
     let error
 
-    onMount(async() => {
-        firebaseui = (await import('firebaseui')).default;
-        if ($user) {
-            console.log('user already logged in, redirecting to client portal')
-            goto('/virtualcoaching/client-portal')
-        }
-    })
+    // onMount(async() => {
+    //     firebaseui = (await import('firebaseui')).default;
+    //     if ($user) {
+    //         console.log('user already logged in, redirecting to client portal')
+    //         goto('/virtualcoaching/client-portal')
+    //     }
+    // })
         // ui = new firebaseui.auth.AuthUI(auth);
    
     
@@ -68,23 +69,14 @@
                     nameFirst: '',
                     nameLast: '',
                     uid: user.user.uid,
+                    picture: null,
                     subscription: {
                         active: false,
                         subscriptionID: '',
                     },
-                    // checkIns: [
-                    //     checkIn1: {
-                    //         date: '',
-                    //         questions: [
-                    //             question1: {
-                    //                 question: '',
-                    //                 answer: '',
-                    //             }
-                    //         ]
-                    //     }
-                    // ],
-                    picture: null
-                });
+                    checkIns: checkInsTemplate
+                }
+                );
             } catch (err) {
                 error = err.message;
             }

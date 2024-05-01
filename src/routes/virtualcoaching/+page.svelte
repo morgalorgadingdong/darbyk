@@ -7,10 +7,10 @@
   import { goto } from "$app/navigation";
   import { GoogleAuthProvider, EmailAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
-  // if (!$user) {
-  //     console.log('user not logged in, redirecting to login page')
-  //     goto('/client-portal/login')
-  // }
+  if (!$user) {
+      console.log('user not logged in, redirecting to login page')
+      goto('/client-portal/login')
+  }
 
   let auth = getAuth();
 
