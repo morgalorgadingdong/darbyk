@@ -24,7 +24,7 @@
 <section class="col-12 d-flex justify-content-start flex-wrap px-0 py-5">
     
     <div class="col-12 col-sm-6 d-flex justify-content-center align-items-start px-0 product-image-container">
-        {#if data.imgURL.length > 1}
+        {#if data.imgURL}
         <Splide aria-label="" class="z-reset col-12 px-0" hasTrack={ false } options={ {
             type: 'loop',
             perPage: 1,

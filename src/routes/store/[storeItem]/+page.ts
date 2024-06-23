@@ -25,10 +25,11 @@ export const load = (async ({ params }) => {
     } else {
         throw error(404, "that item does not exist!");
     }
-    console.log(data)
+    console.log('data', data)
     
 
     return {
+        
         name: data.name,
         description: data.description,
         descriptionHTML: data.descriptionHTML,

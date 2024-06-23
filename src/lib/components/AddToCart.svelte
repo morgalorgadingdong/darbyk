@@ -21,7 +21,7 @@
     let img = data.imgURL[0]
 
   function addToCart() {
-    if (variations.length > 1) {
+    if (variations) {
       if (size && quantity > 0) {
       const item = { name, img, price, size, quantity };
       console.log(currentCart)
@@ -94,7 +94,7 @@
 
 
 <form on:submit|preventDefault={addToCart} class="d-flex justify-content-start align-items-center flex-wrap py-3">
-  {#if variations.length > 1}
+  {#if variations}
   <label for="size" class="pl-3 pr-1">Size:</label>
     <select id="size" bind:value={size}>
       <option value="">Select Size</option>

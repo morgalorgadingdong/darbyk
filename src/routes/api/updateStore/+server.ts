@@ -78,7 +78,7 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
 //     }
 // }
 
-export async function POST({ request }) {
+export async function GET({ request }) {
     console.log(await request.body);
 
     let storeItems;
@@ -95,6 +95,9 @@ export async function POST({ request }) {
         });
 
         storeItems = response.result.items;
+        storeItems.forEach(item => {
+            squareItemIds.push(item.id)
+        })
         console.log(storeItems);
 
         // Process items asynchronously
@@ -175,25 +178,49 @@ async function retrieveStoreItemImgs(currentItem) {
 }
 
 async function setStoreItemToDB(currentItem) {
-    const docRef = doc(db, "store", currentItem.name);
-    await setDoc(docRef, {
-        name: currentItem.name,
-        id: currentItem.id,
-        description: currentItem.description,
-        descriptionHTML: currentItem.descriptionHTML,
-        price: currentItem.price,
-        imgIds: currentItem.imgIds,
-        imgURL: currentItem.imgURL,
-        variations: currentItem.variations
-    });
+    const docRef = doc(db, "store", currentItem.id);
+    console.log('variations', currentItem.name, currentItem.variations)
+    if (currentItem.variations) {
+        await setDoc(docRef, {
+            name: currentItem.name,
+            id: currentItem.id,
+            description: currentItem.description,
+            descriptionHTML: currentItem.descriptionHTML,
+            price: currentItem.price,
+            imgIds: currentItem.imgIds,
+            imgURL: currentItem.imgURL,
+            variations: currentItem.variations
+        });    
+    } else {
+        await setDoc(docRef, {
+            name: currentItem.name,
+            id: currentItem.id,
+            description: currentItem.description,
+            descriptionHTML: currentItem.descriptionHTML,
+            price: currentItem.price,
+            imgIds: currentItem.imgIds,
+            imgURL: currentItem.imgURL
+        });
+    }
 }
 
 async function deleteNonExistentItems(squareItemIds) {
+    // Get all documents from the store collection
     const querySnapshot = await getDocs(collection(db, 'store'));
-
-    for (let doc of querySnapshot.docs) {
-        if (!squareItemIds.includes(doc.data().id)) {
+    
+    console.log('Deleting store items');
+    console.log('Square Item IDs:', squareItemIds);
+    
+    // Loop through each document
+    querySnapshot.forEach(async (doc) => {
+        const docId = doc.data().id;
+        console.log('Checking document ID:', docId);
+        
+        // If the document's id is not found in the squareItemIds array, delete the document
+        if (!squareItemIds.includes(docId)) {
+            console.log(`Deleting ${docId}`);
             await deleteDoc(doc.ref);
         }
-    }
+    });
 }
+

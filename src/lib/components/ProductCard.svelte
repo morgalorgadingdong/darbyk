@@ -4,11 +4,12 @@
     // let price = item.itemData.variations[0].itemVariationData.priceMoney.amount;
     // price = (Number(price.slice(0, -1))) / 100;
     let safeName = encodeURIComponent(product.name)
+    let id = encodeURIComponent(product.id)
 
 </script>
 
 
-<a href={'./store/' + safeName} data-sveltekit-preload-data="hover">
+<a href={'./store/' + id} data-sveltekit-preload-data="hover">
     <div class="col-12 card mx-0 px-0">
         <div class="card-body">
             <div class="card-img-top" >
