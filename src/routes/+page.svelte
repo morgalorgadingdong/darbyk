@@ -52,7 +52,7 @@ onMount(() => {
 
 <section id="hero" class="d-flex justify-content-between align-items-center flex-column flex-md-row">
     <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start align-items-center flex-wrap order-md-0 order-2">
-        <h1 class="mb-3">Your local (+ virtual) skin and brow expert</h1>
+        <h1 class="mb-3">Your local & virtual skin and brow expert</h1>
         <Button type = {'primary'} url = {'/about'}>Book</Button>
     </div>
     <div class="col-12 col-md-6 order-1 d-flex justify-content-center">
@@ -64,50 +64,42 @@ onMount(() => {
 <section id="menu" class="d-flex justify-content-center align-items-start pt-5 col-12">
     <Shadow id="shadow-home-menu-1" type="1" classs="col-10 col-md-6"/>
     <Shadow id="shadow-home-menu-2" type="2" classs="col-12"/>
-    <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-center flex-wrap mt-sm-3 mt-lg-5 pt-md-3 pt-lg-5">
+    <ul class="col-12 col-md-10 col-xl-6 d-flex justify-content-start flex-wrap mt-sm-3 mt-lg-5 pt-md-3 pt-lg-5">
         <li class="d-flex justify-content-center col-12 flex-wrap pt-0">
-            <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
-                <h2 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 <b>/</b> Customized Treatments and Expert Care</h2>
+            <div class="d-flex justify-content-start menu-h3-container col-12 pl-5">
+                <h2 class="menu-item" on:click={() => toggleMenuView(1)}>N0. 1 <b>/</b> Customized Treatments</h2>
             </div>
             {#if menuView == 1}
             <div class="d-flex justify-content-center flex-wrap " transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">No two brows or skin needs are alike! You deserve personalized care; from the treatments you receive to the
+                <p class="pb-3 special">No two brows or skin needs are alike! You deserve personalized care, from the treatments you receive to the
                     routine you follow at home. I offer an individualized and tailored experience to help you reach and maintain
                     your skin, brow, and lash goals. Whether you’re a local client in my studio or a virtual client across the country,
-                    I am committed to providing you with a personalized and professional experience. As my client, you can be
-                    confident in my extensive training, knowledge, and passion. Whether it’s a consultation, a monthly
-                    appointment, or a text - I am here for you and your self-care needs.</p>
-                <Button type = {'primary'} url = {'/about'}>Book</Button>
+                    I am committed to providing you with a personalized and professional experience to help you reach and maintain your skin, brow, and lash goals.</p>
+                <Button type = {'primary'} url = {'https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services'}>Book now</Button>
             </div>
             {/if}
             <div class="underline"></div>
         </li>
         <li class="d-flex justify-content-center col-12 flex-wrap">
-            <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
+            <div class="d-flex justify-content-start menu-h3-container col-12 pl-5">
                 <h2 class="menu-item" on:click={() => toggleMenuView(2)}>N0. 2 <b>/</b> Acne Program</h2>
             </div>
             {#if menuView == 2}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">After personally dealing with acne and unbalanced skin for years, it is my passion to help as many individuals
-                    manage their own acne and achieve healthy, glowing skin. Available for both in person and virtual clients, this
-                    program starts with an extensive consultation and includes weekly check-ins, a customized routine, and
-                    lifestyle recommendations to give support in your clearing journey.</p>
-                <Button type = {'primary'} url = {'/about'}>Book</Button>
+                <p class="pb-3 special">After personally struggling with my skin for years, it has become my passion to help clients manage their acne and achieve healthy skin. My acne program is a unique approach to clearing acne and can be tailored to accommodate local or virtual clients.</p>
+                <Button type = {'primary'} url = {'/about'}>Learn More</Button>
             </div>
             {/if}
             <div class="underline"></div>
         </li>
         <li class="d-flex justify-content-center col-12 flex-wrap">
-            <div class="d-flex justify-content-center menu-h3-container col-12 px-0">
-                <h2 class="menu-item" on:click={() => toggleMenuView(3)}>N0. 3 <b>/</b> Virtual Clients</h2>
+            <div class="d-flex justify-content-start menu-h3-container col-12 pl-5">
+                <h2 class="menu-item" on:click={() => toggleMenuView(3)}>N0. 3 <b>/</b> Virtual Coaching</h2>
             </div>
             {#if menuView == 3}
             <div class="d-flex justify-content-center flex-wrap" transition:slide={{ duration: 500 }}>
-                <p class="pb-3 special">While monthly facials are everyone’s favorite - they only make up about 20% of your skin progress. The other
-                    80% lies in your daily routine, both internally and externally. I have worked with individuals from across the
-                    country to help them learn how to listen to their skin, holistically heal skin conditions through diet, products and
-                    lifestyle, and improve their home care routines with personalized recommendations and continuous guidance.</p>
-                <Button type = {'primary'} url = {'/signup'}>Sign Up</Button>
+                <p class="pb-3 special">Skincare can feel complex and overwhelming, but it shouldn't! I am here to help you navigate through the ever changing trends and edducate you on how to listen to your skin, create a custom routine, and guide you to glowing skin - regardless of your location.</p>
+                <Button type = {'primary'} url = {'/signup'}>Learn More</Button>
             </div>
             {/if}
             
@@ -163,15 +155,16 @@ onMount(() => {
 <section id="about" class="d-flex justify-content-center align-items-center col-12 col-md-10 flex-wrap">
     <div id="img-container" class="col-12 col-xl-6 col-lg-8 col-md-10 col-sm-10 px-3 d-flex justify-content-center flex-wrap">
         <img src="../img/about.jpg" alt="" class="border-radius-5"/>
-        <div>
+        <!-- <div>
             <h4 id="about-special">
                 Hello, my name is Darby
             </h4>
-        </div>
+        </div> -->
         
     </div>
-    <div  class="col-12 col-xl-6 col-md-12 col-sm-10 d-flex justify-content-center flex-wrap px-0">    
-        <p id="text-container" class="col-10 py-3 special">Since launching Darby K Aesthetics in 2019, I've had the joy of guiding countless individuals in Medford, Oregon and beyond, towards achieving clear, radiant skin. Embracing a holistic approach to skincare, I work both in-person and virtually to ensure every client receives personalized care. I'm deeply passionate about what I do, and my goal is to help each person look and feel their best, no matter where they are. Let's embrace the beauty of natural, glowing skin together.<br><br>-Darby</p>
+    <div  class="col-12 col-xl-6 col-md-12 col-sm-10 d-flex justify-content-center flex-wrap px-0 mt-3 py-3">    
+        <h5>Hi, I'm Darby!</h5>
+        <p id="text-container" class="col-10 py-3 special">I'm a 26 year old skincare enghusiast, brow lover and business owner based out of Southern Oregon. I understand the importance of feeling confident in our unique beauty, and whether we worj together in person or virtually I am committed to providing you with a personalized and professional experience. With over 6 years of experience in the beauty industry, you can feel confident in my training, knowledge, and genuine love for my work. I can't wait to meet you!</p>
     </div>
 </section>
 
@@ -192,6 +185,11 @@ onMount(() => {
 
     #hero, #menu {
         margin-top: 0;
+    }
+
+    #hero h1 {
+        text-transform: uppercase;
+        line-height: 150%;
     }
 
     #about img { 
@@ -239,6 +237,7 @@ onMount(() => {
         margin-bottom: 0;
         text-transform: uppercase;
         letter-spacing: 0.2rem;
+        line-height: 150%;
     }
 
     /* #menu li h3::after {

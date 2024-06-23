@@ -21,6 +21,7 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
     // if (imgIds) {this.imgIds = imgIds;}
     // if (imgURL) {this.imgURL = imgURL;}
     // if (variations) {this.variations = variations;}
+    this.name = name;
     this.id = id;
     this.description = description;
     this.descriptionHTML = descriptionHTML;
@@ -42,186 +43,157 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
 
 // }
 
+// export async function POST({ request }) {
+//     console.log(await request.json());
 
-/** @type {import('./$types').RequestHandler} */
-export async function POST({ request, cookies }) {
-    console.log(request.body)
-    
-    let storeItems: any;
-    let priceS: string;
-    let price: number;
-    let variations: any[] = [];
+//     let storeItems;
+//     let squareItemIds = [];
+
+//     try {
+//         const response = await client.catalogApi.searchCatalogItems({
+//             customAttributeFilters: [
+//                 {
+//                     customAttributeDefinitionId: 'LY6JV4CT6PXH73EFUVI4MN73',
+//                     boolFilter: true
+//                 }
+//             ]
+//         });
+
+//         storeItems = response.result.items;
+//         console.log(storeItems);
+
+//         // Process items asynchronously
+//         setImmediate(() => {
+//             processStoreItems(storeItems, squareItemIds)
+//                 .then(() => console.log('Processing completed'))
+//                 .catch(error => console.log('Error during processing:', error));
+//         });
+
+//         // Respond immediately
+//         return new Response(JSON.stringify({ status: 200, message: "Processing started" }), { status: 200 });
+
+//     } catch (error) {
+//         console.log(error);
+//         return new Response(JSON.stringify({ error: "Internal server error", details: error.message }), { status: 500 });
+//     }
+// }
+
+export async function GET({ request }) {
+    console.log(await request.body);
+
+    let storeItems;
     let squareItemIds = [];
+
     try {
         const response = await client.catalogApi.searchCatalogItems({
             customAttributeFilters: [
                 {
-                customAttributeDefinitionId: 'LY6JV4CT6PXH73EFUVI4MN73',
-                boolFilter: true
+                    customAttributeDefinitionId: 'LY6JV4CT6PXH73EFUVI4MN73',
+                    boolFilter: true
                 }
             ]
-            });
+        });
+
         storeItems = response.result.items;
-        console.log(storeItems)
-        //Note for future self, this code assumes all variations of item are priced the same
-        for (let i = 0; i < storeItems.length; i++) {
-            variations = []
-            priceS = storeItems[i].itemData.variations[0].itemVariationData.priceMoney.amount
-            priceS = String(priceS)
-            // priceS = priceS.slice(0, priceS.length - 1)
-            price = Number(priceS)
-            price = price/100
-            storeItems[i].itemData.variations.forEach(variation => {
-                // console.log(variation)
-                variations.push(variation.itemVariationData.name)
-            })
-            // console.log(variations)
-            console.log('Retrieved store item', storeItems[i].itemData.name);
-            let currentItem = new StoreItem(
-                '',
-                '',
-                '',
-                '',
-                0,
-                [''],
-                [''],
-                []
-            )
-            currentItem.name = storeItems[i].itemData.name
-            currentItem.id = storeItems[i].id
-            if (storeItems[i].itemData.description) {currentItem.description = storeItems[i].itemData.description}
-            if (storeItems[i].itemData.descriptionHtml) {currentItem.descriptionHTML = storeItems[i].itemData.descriptionHtml}
-            currentItem.price = price
-            if (storeItems[i].itemData.imageIds) {currentItem.imgIds = storeItems[i].itemData.imageIds}
-            if (variations) {currentItem.variations = variations}
+        console.log(storeItems);
 
-            
-            
-            // StoreItem(
-            //     storeItems[i].itemData.name, 
-            //     storeItems[i].id, 
-            //     storeItems[i].itemData.description, 
-            //     storeItems[i].itemData.descriptionHtml, 
-            //     price, 
-            //     storeItems[i].itemData.imageIds,
-            //     [''],
-            //     variations
-            // )
+        // Process items asynchronously
+        setImmediate(() => {
+            processStoreItems(storeItems, squareItemIds)
+                .then(() => console.log('Processing completed'))
+                .catch(error => console.log('Error during processing:', error));
+        });
 
-            squareItemIds.push(storeItems[i].id);
+        // Respond immediately
+        return new Response(JSON.stringify({ status: 200, message: "Processing started" }), { status: 200 });
 
-            try {
-                await retrieveStoreItemImgs(currentItem)
-                await setStoreItemToDB(currentItem)
-                await deleteNonExistentItems(squareItemIds);
-            } catch (error) {
-                console.log(error)
-            }
-    
-            
-        
-        }
-            
-        // console.log(storeItems)
-        
-        async function retrieveStoreItemImgs(currentItem) {    
-            return new Promise(async (resolve, reject) => {
-                let ids = currentItem.imgIds;
-                let imgURL = [];
-                try {
-                  if (ids.length === 1) {
-                    console.log('Single image ID found', currentItem.name);
-                    ids = String(ids);
-                    console.log(`attempting to retrieve image with id: ${ids}`);
-                    const response = await client.catalogApi.retrieveCatalogObject(ids);
-                    imgURL.push(response.result.object.imageData.url);
-                    currentItem.imgURL = imgURL;
-                    console.log('Appended all img URLs');
-                  } else if (ids.length > 1) {
-                    console.log('Multiple image IDs found');
-                    for (let id of ids) {
-                      id = String(id);
-                      console.log(`attempting to retrieve image with id: ${id}`);
-                      const response = await client.catalogApi.retrieveCatalogObject(id);
-                      console.log('Retrieved image');
-                      imgURL.push(response.result.object.imageData.url);
-                      currentItem.imgURL = imgURL;
-                    }
-                    console.log('Appended all img URLs');
-                  }
-                  resolve(currentItem); // Resolve the promise with the currentItem
-                } catch (error) {
-                  console.log(error);
-                  reject(error);
-                }
-              });
-            
-        }
+    } catch (error) {
+        console.log(error);
+        return new Response(JSON.stringify({ error: "Internal server error", details: error.message }), { status: 500 });
+    }
+}
 
-        async function setStoreItemToDB(currentItem) {
-            // console.log(currentItem)
-            const docRef = doc(db, "store", currentItem.name);
-            const docData = currentItem
+async function processStoreItems(storeItems, squareItemIds) {
+    let price, variations;
 
-            // let price = item.itemData.variations[0].itemVariationData.priceMoney.amount
-            
-            // console.log( 'price: ' + price)
-            console.log(currentItem)
-            await setDoc(docRef, {
-                name: currentItem.name,
-                id: currentItem.id,
-                description: currentItem.description,
-                descriptionHTML: currentItem.descriptionHTML,
-                price: currentItem.price,
-                imgIds: currentItem.imgIds, 
-                imgURL: currentItem.imgURL,
-                variations: currentItem.variations
-            });
-            // await setDoc(docRef, {
-            //     name: currentItem.name,
-            //     id: currentItem.id,
-            //     description: currentItem.description,
-            //     descriptionHTML: currentItem.descriptionHTML,
-            //     price: currentItem.price,
-            //     imgIds: currentItem.imgIds, 
-            //     imgURL: currentItem.imgURL,
-            //     variations: currentItem.variations
-            // });
-        }
+    for (let item of storeItems) {
+        variations = [];
+        let priceS = String(item.itemData.variations[0].itemVariationData.priceMoney.amount);
+        price = Number(priceS) / 100;
 
-        async function deleteNonExistentItems(squareItemIds) {
-            // Get all documents from the store collection
-            const querySnapshot = await getDocs(collection(db, 'store'));
-        
-            // Loop through each document
-            querySnapshot.forEach(async (doc) => {
-                // If the document's id is not found in the squareItemIds array, delete the document
-                if (!squareItemIds.includes(doc.data().id)) {
-                    await deleteDoc(doc.ref);
-                }
-            });
-        }
+        item.itemData.variations.forEach(variation => {
+            variations.push(variation.itemVariationData.name);
+        });
 
+        console.log('Retrieved store item', item.itemData.name);
 
-        console.log('Online store updated');
+        let currentItem = new StoreItem(
+            item.itemData.name,
+            item.id,
+            item.itemData.description || '',
+            item.itemData.descriptionHtml || '',
+            price,
+            item.itemData.imageIds || [],
+            variations
+        );
 
-        let responseBody = {
-            status: 200,
-            body: {
-                message: "Online store updated"
-            }
-        }
+        squareItemIds.push(item.id);
 
-        return new Response(responseBody)
-        
-
+        try {
+            await retrieveStoreItemImgs(currentItem);
+            await setStoreItemToDB(currentItem);
         } catch (error) {
             console.log(error);
-            return {
-                status: 500,
-                body: JSON.stringify({ error: "Internal server error", details: error.message }),
-            };
         }
-        
     }
 
+    try {
+        await deleteNonExistentItems(squareItemIds);
+    } catch (error) {
+        console.log(error);
+    }
+
+    console.log('Online store updated');
+}
+
+async function retrieveStoreItemImgs(currentItem) {
+    let ids = currentItem.imgIds;
+    let imgURL = [];
+
+    if (ids.length === 1) {
+        const response = await client.catalogApi.retrieveCatalogObject(ids[0]);
+        imgURL.push(response.result.object.imageData.url);
+    } else if (ids.length > 1) {
+        for (let id of ids) {
+            const response = await client.catalogApi.retrieveCatalogObject(id);
+            imgURL.push(response.result.object.imageData.url);
+        }
+    }
+
+    currentItem.imgURL = imgURL;
+    return currentItem;
+}
+
+async function setStoreItemToDB(currentItem) {
+    const docRef = doc(db, "store", currentItem.name);
+    await setDoc(docRef, {
+        name: currentItem.name,
+        id: currentItem.id,
+        description: currentItem.description,
+        descriptionHTML: currentItem.descriptionHTML,
+        price: currentItem.price,
+        imgIds: currentItem.imgIds,
+        imgURL: currentItem.imgURL,
+        variations: currentItem.variations
+    });
+}
+
+async function deleteNonExistentItems(squareItemIds) {
+    const querySnapshot = await getDocs(collection(db, 'store'));
+
+    for (let doc of querySnapshot.docs) {
+        if (!squareItemIds.includes(doc.data().id)) {
+            await deleteDoc(doc.ref);
+        }
+    }
+}

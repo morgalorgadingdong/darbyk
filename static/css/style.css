@@ -118,11 +118,13 @@ button:hover, .btn:hover {
 .hamburger-menu.active .line1 {
   transform-origin: center;
   transform: rotate(35deg) translatey(3px);
+  stroke: var(--color-background) !important;
   }
 
 .hamburger-menu.active .line2 {
 transform: rotate(-35deg) translateY(-3px);
 transform-origin: center;
+stroke: var(--color-background) !important;
 }
 
 
