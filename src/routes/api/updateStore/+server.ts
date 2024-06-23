@@ -78,7 +78,7 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
 //     }
 // }
 
-export async function GET({ request }) {
+export async function POST({ request }) {
     console.log(await request.body);
 
     let storeItems;
