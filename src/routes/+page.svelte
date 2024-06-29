@@ -164,7 +164,7 @@ onMount(() => {
     </div>
     <div  class="col-12 col-xl-6 col-md-12 col-sm-10 d-flex justify-content-center flex-wrap px-0 mt-3 py-3">    
         <h5>Hi, I'm Darby!</h5>
-        <p id="text-container" class="col-10 py-3 special">I'm a 26 year old skincare enghusiast, brow lover and business owner based out of Southern Oregon. I understand the importance of feeling confident in our unique beauty, and whether we worj together in person or virtually I am committed to providing you with a personalized and professional experience. With over 6 years of experience in the beauty industry, you can feel confident in my training, knowledge, and genuine love for my work. I can't wait to meet you!</p>
+        <p id="text-container" class="col-10 py-3 special">I'm a 26 year old skincare enthusiast, brow lover and business owner based out of Southern Oregon. I understand the importance of feeling confident in our unique beauty, and whether we work together in person or virtually I am committed to providing you with a personalized and professional experience. With over 6 years of experience in the beauty industry, you can feel confident in my training, knowledge, and genuine love for my work. I can't wait to meet you!</p>
     </div>
 </section>
 
