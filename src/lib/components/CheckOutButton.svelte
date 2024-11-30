@@ -33,12 +33,14 @@ async function createCheckoutLink() {
         }
     }
 })
-console.log(formattedCart)
+
   isLoading = true;  
   const data = {
       items: formattedCart
     };
-
+    console.log('start')
+    console.log(JSON.stringify(data))
+    console.log('end')
     try {
       const response = await fetch('/api/createCheckoutLink', {
         method: 'POST',

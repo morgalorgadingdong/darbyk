@@ -43,43 +43,8 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
 
 // }
 
-// export async function POST({ request }) {
-//     console.log(await request.json());
-
-//     let storeItems;
-//     let squareItemIds = [];
-
-//     try {
-//         const response = await client.catalogApi.searchCatalogItems({
-//             customAttributeFilters: [
-//                 {
-//                     customAttributeDefinitionId: 'LY6JV4CT6PXH73EFUVI4MN73',
-//                     boolFilter: true
-//                 }
-//             ]
-//         });
-
-//         storeItems = response.result.items;
-//         console.log(storeItems);
-
-//         // Process items asynchronously
-//         setImmediate(() => {
-//             processStoreItems(storeItems, squareItemIds)
-//                 .then(() => console.log('Processing completed'))
-//                 .catch(error => console.log('Error during processing:', error));
-//         });
-
-//         // Respond immediately
-//         return new Response(JSON.stringify({ status: 200, message: "Processing started" }), { status: 200 });
-
-//     } catch (error) {
-//         console.log(error);
-//         return new Response(JSON.stringify({ error: "Internal server error", details: error.message }), { status: 500 });
-//     }
-// }
-
-export async function GET({ request }) {
-    console.log(await request.body);
+export async function POST({ request }) {
+    console.log(await request.json());
 
     let storeItems;
     let squareItemIds = [];
@@ -95,9 +60,6 @@ export async function GET({ request }) {
         });
 
         storeItems = response.result.items;
-        storeItems.forEach(item => {
-            squareItemIds.push(item.id)
-        })
         console.log(storeItems);
 
         // Process items asynchronously
@@ -115,6 +77,46 @@ export async function GET({ request }) {
         return new Response(JSON.stringify({ error: "Internal server error", details: error.message }), { status: 500 });
     }
 }
+
+
+
+// export async function GET({ request }) {
+//     console.log(await request.body);
+
+//     let storeItems;
+//     let squareItemIds = [];
+
+//     try {
+//         const response = await client.catalogApi.searchCatalogItems({
+//             customAttributeFilters: [
+//                 {
+//                     customAttributeDefinitionId: 'LY6JV4CT6PXH73EFUVI4MN73',
+//                     boolFilter: true
+//                 }
+//             ]
+//         });
+
+//         storeItems = response.result.items;
+//         storeItems.forEach(item => {
+//             squareItemIds.push(item.id)
+//         })
+//         console.log(storeItems);
+
+//         // Process items asynchronously
+//         setImmediate(() => {
+//             processStoreItems(storeItems, squareItemIds)
+//                 .then(() => console.log('Processing completed'))
+//                 .catch(error => console.log('Error during processing:', error));
+//         });
+
+//         // Respond immediately
+//         return new Response(JSON.stringify({ status: 200, message: "Processing started" }), { status: 200 });
+
+//     } catch (error) {
+//         console.log(error);
+//         return new Response(JSON.stringify({ error: "Internal server error", details: error.message }), { status: 500 });
+//     }
+// }
 
 async function processStoreItems(storeItems, squareItemIds) {
     let price, variations;

@@ -29,7 +29,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
               const response = await client.checkoutApi.createPaymentLink({
                   idempotencyKey: key,
                   order: {
-                  locationId: 'LEYW7FQW17A32', //production locationId
+                  locationId: '43SZPJZ855AGE', //production locationId
               // locationId: 'LXMWQKX9V6X68', //sandbox locationId
                   lineItems: cart,
               // discounts: [

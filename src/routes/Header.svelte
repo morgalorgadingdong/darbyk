@@ -35,8 +35,9 @@ function toggleHamburgerMenu() {
 <nav class="col-12 col-md-10 px-0 pt-3 pt-md-5">
     <div class="justify-content-between col-12 align-items-center d-md-flex d-none">
         <ul class="col-4 col-lg-3">
+            <a href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>Book</li></a>
             <a href="/store"><li>store</li></a>
-            <a href="/virtualcoaching"><li>virtual coaching</li></a>
+            <!-- <a href="/virtualcoaching"><li>virtual coaching</li></a> -->
         </ul>
         <div class="col-4 px-0">
             <a href="/" class="col-12 px-0"><img class="col-12" src="../img/logo-1.png" alt="logo"></a>
@@ -44,7 +45,7 @@ function toggleHamburgerMenu() {
         <ul class="col-4 col-lg-3">
             <a href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>Testimonials</li></a>
             <a href="/store/cart"><li><img src="../img/shopping-cart.png" /></li></a>
-            <a href="/virtualcoaching/login"><li><img src="../img/user.png" /></li></a>
+            <!-- <a href="/virtualcoaching/login"><li><img src="../img/user.png" /></li></a> -->
         </ul>
     </div>
     <div class= "justify-content-between col-12 align-items-center d-flex d-md-none">
@@ -62,10 +63,10 @@ function toggleHamburgerMenu() {
     {#if menuShow}
         <ul id="mobileMenu" class="d-flex flex-column align-items-end" transition:fly = {{ duration: 600, x: 200 }}>
             <a on:click={toggleHamburgerMenu} href="/store"><li>store</li></a>
-            <a on:click={toggleHamburgerMenu} href="/virtualcoaching"><li>virtual coaching</li></a>
+            <!-- <a on:click={toggleHamburgerMenu} href="/virtualcoaching"><li>virtual coaching</li></a> -->
             <a on:click={toggleHamburgerMenu} href="https://squareup.com/appointments/book/7yn38wnnxsv2jw/43SZPJZ855AGE/services"><li>testimonials</li></a>
             <a on:click={toggleHamburgerMenu} href="/cart"><li class="d-flex justify-content-end">cart</li></a>
-            <a on:click={toggleHamburgerMenu} href="/virtualcoaching/login"><li class="d-flex justify-content-end">login</a>
+            <!-- <a on:click={toggleHamburgerMenu} href="/virtualcoaching/login"><li class="d-flex justify-content-end">login</a> -->
         </ul>
     {/if}
 </nav>
