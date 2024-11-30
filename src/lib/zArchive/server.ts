@@ -44,7 +44,7 @@ function StoreItem(name, id, description, descriptionHTML, price, imgIds, imgURL
 
 
 /** @type {import('./$types').RequestHandler} */
-export async function POST ({ request, cookies }) {
+export async function GET ({ request, cookies }) {
     console.log(request.body)
     
     let storeItems: any;
